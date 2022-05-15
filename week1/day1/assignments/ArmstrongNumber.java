@@ -47,7 +47,7 @@ public class ArmstrongNumber {
 		
 
 		// Declare your input
-
+			int input=153;
 		
 
 		
@@ -58,6 +58,16 @@ public class ArmstrongNumber {
 		
 
 			// Assign input into variable original 
+		int original=153;
+		int cal=0;
+		
+		while(original>0){
+			int remainder=original%10;
+			cal=cal+(remainder*remainder*remainder);
+			original=original/10;
+			
+		}
+		system.out.println(cal);
 
 		
 
@@ -86,7 +96,7 @@ public class ArmstrongNumber {
 
 			//When it matches print it as Armstrong number
 
-
+		}
 		
 
 
