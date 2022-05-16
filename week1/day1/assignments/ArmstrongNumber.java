@@ -47,6 +47,7 @@ public class ArmstrongNumber {
 		
 
 		// Declare your input
+		int num=153;
 
 		
 
@@ -54,22 +55,31 @@ public class ArmstrongNumber {
 
 			// Declare 3 more int variables as calculated, remainder, original (Tip: Initialize calculated alone)
 
-		
+		int cal,rem,ori;
+		cal=0;
 		
 
 			// Assign input into variable original 
 
-		
+		ori=num;
 
 		
 
 			// Use loop to calculate: use while loop to set condition until the number greater than 0
+		while(num>0){
 
 		
 
 			// Within loop: get the remainder when done by 10 (Tip: Use Mod operator)
-
-			
+			rem=ori%10;
+			cal=cal+(rem*rem*rem);
+			ori=ori/10;
+		}
+		system.out.println(cal);
+		if(cal==num)
+		{System.out.println("Number is Armstrong");}
+		else
+		System.out.println("Not Armstrong");
 
 			// Within loop: get the quotient when done by 10 (Tip: Assign the result to input)
 
