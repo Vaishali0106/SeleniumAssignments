@@ -3,42 +3,61 @@ package week2.day2.Assignments
 public class CreateLead {
 
 	public static void main(String[] args) {
-	/*
-	 * //Pseudo Code
-	 * 
-	 * 1. Launch URL "http://leaftaps.com/opentaps/control/login"
-	 * 
-	 * 2. Enter UserName and Password Using Id Locator
-	 * 
-	 * 3. Click on Login Button using Class Locator
-	 * 
-	 * 4. Click on CRM/SFA Link
-	 * 
-	 * 5. Click on Leads Button
-	 * 
-	 * 6. Click on create Lead Button
-	 * 
-	 * 7. Enter CompanyName using id Locator
-	 * 
-	 * 8. Enter FirstName using id Locator
-	 * 
-	 * 9. Enter LastName using id Locator
-	 * 
-	 * 10. Select value as Employee in Source Using SelectbyVisible text
-	 * 
-	 * 11. Select value as Pay Per Click Advertising in MarketingCampaignId Using SelectbyValue
-	 * 
-	 * 
-	 * 13. Select value as Corporation in OwnerShip field Using SelectbyIndex
-	 * 
-	 * 14. Select value as India in Country Field Using SelectbyVisibletext
-	 *  
-	 * 15. Click on create Lead Button Using name Locator
-	 * 
-	 * 16. Get the Title of the resulting Page
-	 * 
-	 
-	 */
+	WebDriverManager.chromedriver().setup();
+		
+		ChromeDriver driver=new ChromeDriver();
+		
+		driver.get("http://leaftaps.com/opentaps/control/main");
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		WebElement username = driver.findElement(By.id("username"));
+		username.sendKeys("DemoSalesManager");
+		
+		WebElement password = driver.findElement(By.xpath("//input[@id='password']"));
+		password.sendKeys("crmsfa");
+		
+		WebElement login = driver.findElement(By.xpath("//input[@class='decorativeSubmit']"));
+		login.click();
+		
+		WebElement crmsfa = driver.findElement(By.xpath("//div[@class='crmsfa']//div[1]"));
+		crmsfa.click();
+		
+		WebElement leads = driver.findElement(By.xpath("//a[contains(text(),'Leads')]"));
+		leads.click();
+		
+		WebElement createLead = driver.findElement(By.xpath("//a[contains(text(),'Create Lead')]"));
+		createLead.click();
+		
+		driver.findElement(By.xpath("//input[@id='createLeadForm_companyName']")).sendKeys("CCC");
+		driver.findElement(By.xpath("//input[@id='createLeadForm_firstName']")).sendKeys("Test1");
+		driver.findElement(By.xpath("//input[@id='createLeadForm_lastName']")).sendKeys("Test2");
+		
+		WebElement source = driver.findElement(By.xpath("//select[@id='createLeadForm_dataSourceId']"));
+		Select emp =new Select(source);
+		emp.selectByVisibleText("Employee");
+		
+		WebElement campaign = driver.findElement(By.xpath("//select[@id='createLeadForm_marketingCampaignId']"));
+		Select cam=new Select(campaign);
+		cam.selectByValue("9001");
+		
+		WebElement ownership = driver.findElement(By.xpath("//select[@id='createLeadForm_ownershipEnumId']"));
+		Select owner=new Select(ownership);
+		owner.selectByIndex(6);
+		
+		 WebElement country = driver.findElement(By.xpath("//select[@id='createLeadForm_generalCountryGeoId']"));
+		Select countr= new Select(country);
+		countr.selectByVisibleText("India");
+		
+		WebElement create = driver.findElement(By.xpath("//input[@name='submitButton']"));
+		create.click();
+		
+		System.out.println(driver.getTitle());
+		
+		
+		
+		
 	}
 	
 }	
