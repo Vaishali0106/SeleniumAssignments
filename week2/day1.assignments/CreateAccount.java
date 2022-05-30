@@ -44,6 +44,104 @@ public class CreateAccount {
         
       
 		 */
+				WebDriverManager.chromedriver().setup();
+		
+		ChromeDriver driver=new ChromeDriver();
+		
+		driver.get("http://leaftaps.com/opentaps/control/main");
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		WebElement username = driver.findElement(By.id("username"));
+		username.sendKeys("DemoSalesManager");
+		
+		WebElement password = driver.findElement(By.xpath("//input[@id='password']"));
+		password.sendKeys("crmsfa");
+		
+		WebElement login = driver.findElement(By.xpath("//input[@class='decorativeSubmit']"));
+		login.click();
+		
+		WebElement crmsfa = driver.findElement(By.xpath("//div[@class='crmsfa']//div[1]"));
+		crmsfa.click();
+		
+		WebElement accountsTab = driver.findElement(By.xpath("//div[@class='x-panel-header']//a[contains(text(),'Accounts')]"));
+		accountsTab.click();
+		
+		WebElement createAccount = driver.findElement(By.xpath("//div[@class='frameSectionBody']//ul/li[2]//a"));
+		createAccount.click();
+		
+		WebElement accountName = driver.findElement(By.id("accountName"));
+		accountName.sendKeys("Debit Limited Account");
+		
+		WebElement description = driver.findElement(By.xpath("//textarea[@name='description']"));
+		description.sendKeys("Selenium Automation Tester");
+		
+		WebElement localName = driver.findElement(By.xpath("//input[@id='groupNameLocal']"));
+		localName.sendKeys("Demo");
+		
+		WebElement siteName = driver.findElement(By.xpath("//input[@id='officeSiteName']"));
+		siteName.sendKeys("test");
+		
+		WebElement annualRevenue = driver.findElement(By.xpath("//table[@class='fourColumnForm']//tbody//tr[3]//input[@name='annualRevenue']"));
+		annualRevenue.sendKeys("4000000");
+		
+		WebElement 	industry = driver.findElement(By.xpath("//select[@name='industryEnumId']"));
+		Select dd= new Select(industry);
+		dd.selectByVisibleText("Computer Software");
+		
+		WebElement ownership = driver.findElement(By.xpath("//select[@name='ownershipEnumId']"));
+		Select dd2=new Select(ownership);
+		dd2.selectByVisibleText("S-Corporation");
+		
+		WebElement source = driver.findElement(By.xpath("//select[@id='dataSourceId']"));
+		Select dd3=new Select(source);
+		dd3.selectByValue("LEAD_EMPLOYEE");
+		
+		WebElement campaign = driver.findElement(By.xpath("//select[@id='marketingCampaignId']"));
+		Select dd4=new Select(campaign);
+		dd4.selectByIndex(6);
+		
+		WebElement state = driver.findElement(By.xpath("//select[@name='generalStateProvinceGeoId']"));
+		Select dd5=new Select(state);
+		dd5.selectByValue("TX");
+		
+		WebElement createAccount1 = driver.findElement(By.xpath("//input[@value='Create Account']"));
+		createAccount1.click();
+		
+		System.out.println("Pass");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
